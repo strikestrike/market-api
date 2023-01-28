@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function() {
   Route::get('/customers/getTableData'          , 'App\Http\Controllers\CustomersController@getTableData'    )->name('customer.table_data'  );
   Route::get('/customers/{customer}/messages'   , 'App\Http\Controllers\CustomerMessagesController@index'    )->name('customer.messages'  );
   Route::get('/customers/{customer}/contacts'   , 'App\Http\Controllers\CustomerContactsController@index'    )->name('customer.contacts'  );
+  Route::get('/customers/{customer}/calls'   , 'App\Http\Controllers\CustomerCallsController@index'    )->name('customer.calls'  );
   Route::get('/customers/{customer}/files'      , 'App\Http\Controllers\CustomerFilesController@index'       )->name('customer.files'  );
   Route::get('/customers/{customer}/transactions'      , 'App\Http\Controllers\TransactionsController@index'       )->name('customer.transactions'  );
 
@@ -54,6 +55,10 @@ Route::middleware(['auth'])->group(function() {
   Route::get('/customer_contacts/{customer}'             , 'App\Http\Controllers\CustomerContactsController@index'    )->name('admin.customer_contacts.view'  );
   Route::get('/customerscontacts/getTableData'          , 'App\Http\Controllers\CustomerContactsController@getTableData'   )->name('admin.customer_contacts.table_data'  );
   Route::post('/customer_contacts/{customer_contacts}/delete'   , 'App\Http\Controllers\CustomerContactsController@destroy'  )->name('admin.customer_contacts.delete'  );
+
+  Route::get('/customer_calls/{customer}'             , 'App\Http\Controllers\CustomerCallsController@index'    )->name('admin.customer_calls.view'  );
+  Route::get('/customerscalls/getTableData'          , 'App\Http\Controllers\CustomerCallsController@getTableData'   )->name('admin.customer_calls.table_data'  );
+  Route::post('/customer_calls/{customer_call}/delete'   , 'App\Http\Controllers\CustomerCallsController@destroy'  )->name('admin.customer_calls.delete'  );
 
   Route::get('/customer_files/{customer}'             , 'App\Http\Controllers\CustomerFilesController@index'    )->name('admin.customer_files.view'  );
   Route::get('/customersfiles/getTableData'          , 'App\Http\Controllers\CustomerFilesController@getTableData'   )->name('admin.customer_files.table_data'  );
@@ -71,4 +76,22 @@ Route::middleware(['auth'])->group(function() {
   Route::post('/customer_transactions/{transaction}/delete'    , 'App\Http\Controllers\TransactionsController@destroy' )->name('transaction.delete' );
   Route::get('/customerstransactions/getTableData'          , 'App\Http\Controllers\TransactionsController@getTableData'    )->name('transaction.table_data'  );
 
+});
+
+Route::get('/storage', function(){
+    Artisan::call('storage:link');
+    return "link process successfully completed";
+});
+Route::get('artisan/config', function () {
+    Artisan::call('config:clear');
+    Artisan::call('config:cache');
+    return Artisan::output();
+});
+Route::get('artisan/cache', function () {
+    Artisan::call('cache:clear');
+    return Artisan::output();
+});
+Route::get('artisan/view', function () {
+    Artisan::call('view:clear');
+    return Artisan::output();
 });

@@ -323,13 +323,18 @@ return [
             'url'        => '/customer_contacts/all',
         ],
         [
+            'text'       => 'Call Logs',
+            'icon_color' => 'Orange',
+            'url'        => '/customer_calls/all',
+        ],
+        [
             'text'       => 'Files',
             'icon_color' => 'cyan',
             'url'        => '/customer_files/all',
         ],
         [
             'text'       => 'Transactions',
-            'icon_color' => 'blue',
+            'icon_color' => 'Lime',
             'url'        => '/customer_transactions/all',
         ],
         [

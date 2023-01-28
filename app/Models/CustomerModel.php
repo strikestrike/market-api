@@ -22,6 +22,11 @@ class CustomerModel extends Model
         return $this->hasMany(CustomerContactsModel::class, 'customer_id', 'id');
     }
 
+    public function calls()
+    {
+        return $this->hasMany(CustomerCallLogsModel::class, 'customer_id', 'id');
+    }
+
     public function files()
     {
         return $this->hasMany(CustomerFilesModel::class, 'customer_id', 'id');

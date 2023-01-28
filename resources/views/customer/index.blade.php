@@ -45,6 +45,9 @@
                                         Contacts
                                     </th>
                                     <th>
+                                        Calls
+                                    </th>
+                                    <th>
                                         Files
                                     </th>
                                     <th>

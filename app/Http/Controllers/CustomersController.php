@@ -98,6 +98,8 @@ class CustomersController extends Controller
 
                 "contacts_count" => $record->contacts->count(),
 
+                "calls_count" => $record->calls->count(),
+
                 "files_count" => $record->files->count(),
 
                 "transactions_count" => $record->transactions->count(),

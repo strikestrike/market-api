@@ -96,6 +96,16 @@ $(document).ready(function(){
          },
 
          { 
+            data: 'calls_count',
+            render: function (data, type, row) {
+               if (data == 0) {
+                  return 'No calls.'
+               }
+               return `<a href="${base_url}/customers/${row.id}/calls">${data} call${data > 1 ? 's' : ''}</a>`;
+             },
+         },
+
+         { 
          	data: 'files_count',
             render: function (data, type, row) {
             	if (data == 0) {
