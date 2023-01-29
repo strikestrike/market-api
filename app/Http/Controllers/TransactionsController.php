@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\CustomerTransactionsModel;
+use App\Models\CustomerModel;
 use Validator;
 
 class TransactionsController extends Controller
@@ -16,7 +17,9 @@ class TransactionsController extends Controller
      */
     public function index($customer_id)
     { 
-        return view('customer_transactions.index', compact('customer_id'));
+        $customers = CustomerModel::all();
+
+        return view('customer_transactions.index', compact('customer_id', 'customers'));
     }
 
     public function getTableData(Request $request) 
@@ -156,11 +159,13 @@ class TransactionsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'transaction_id'=>'required'
+            'transaction_id'=>'required',
+            'customer_id'=>'required'
         ]);
 
         $transaction = new CustomerTransactionsModel([
             'transaction_id' => $request->get('transaction_id'),
+            'customer_id' => $request->get('customer_id'),
         ]);
         $transaction->save();
 

@@ -31,7 +31,7 @@ $(document).ready(function(){
 
       serverSide: true, 
 
-      autoWidth: false,
+      autoWidth: true,
 
       scrollX: true,
 
@@ -93,13 +93,15 @@ $(document).ready(function(){
 
    }); 
 
+   $('#customer_id').select2();
+
    $('#btn_save').click(function() {
-      var id = $('#id').val();
+      var customer_id = $('#customer_id').val();
       var transaction_id = $('#transaction_id').val();
       $.post({
           type:'POST',
-          url:base_url + '/customer_transactions/',
-          data: {transaction_id: transaction_id},
+          url:base_url + '/customer_transactions',
+          data: {transaction_id: transaction_id, customer_id: customer_id},
           success:function(data) {
             if (data.errors){
               $('#myModal').modal('show');

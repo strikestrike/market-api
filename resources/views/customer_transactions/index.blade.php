@@ -35,7 +35,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table class="table table-bordered table-hover" id="mytable">
+                    <table class="table table-bordered table-hover" id="mytable" style="width: 100%;">
                         <thead>
                             <tr>
                                 <th>
@@ -78,6 +78,18 @@
                 </button>
             </div>
             <div class="modal-body">
+                <input type="hidden" name="id" id="id">
+                <div class="form-group {{ is_numeric($customer_id) && $customer_id > 0 ? 'd-none' : '' }}">
+                  <label>Customer</label>
+                  <div class="select2-purple">
+                    <select class="select2" {{-- multiple="multiple" --}} name="customer_id" id="customer_id" data-placeholder="Select a Customer" data- 
+                              dropdown-css-class="select2-purple" style="width: 100%;" value="{{ is_numeric($customer_id) && $customer_id > 0 ? $customer_id : '' }}">
+                      @foreach($customers as $customer)
+                        <option value="{{ $customer->id }}">{{ $customer->secret_code }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
                 <div class="form-group">
                     <label for="transaction_id">Transaction ID</label>
                     <textarea class="form-control" name="transaction_id" id="transaction_id" placeholder="Enter Transaction ID"></textarea>
@@ -103,6 +115,7 @@
 @stop
 
 @section('plugins.Datatables', true)
+@section('plugins.Select2', true)
 
 @section('js')
     <script>

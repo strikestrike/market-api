@@ -31,7 +31,7 @@ $(document).ready(function(){
 
       serverSide: true, 
 
-      autoWidth: false,
+      autoWidth: true,
 
       scrollX: true,
 
@@ -89,7 +89,7 @@ $(document).ready(function(){
       var notification = $('#notification').val();
       var url = base_url + '/notifications/' +  id;
       if (id == '') {
-         url = base_url + '/notification/'
+         url = base_url + '/notification'
       }
       $.post({
           type:'POST',

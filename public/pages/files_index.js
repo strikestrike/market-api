@@ -32,7 +32,7 @@ $(document).ready(function(){
 
       serverSide: true, 
 
-      autoWidth: false,
+      autoWidth: true,
 
       scrollX: true,
 
@@ -63,7 +63,7 @@ $(document).ready(function(){
          { 
             data: 'original_filename',
             render: function (data, type, row) {
-               return `<a href="${base_url}/storage${row.path}">${row.original_filename}</a>`;
+               return `<a href="${base_url}/storage/${row.path}">${row.original_filename}</a>`;
             },
          }, 
 

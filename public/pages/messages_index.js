@@ -32,7 +32,7 @@ $(document).ready(function(){
 
       serverSide: true, 
 
-      autoWidth: false,
+      autoWidth: true,
 
       scrollX: true,
 

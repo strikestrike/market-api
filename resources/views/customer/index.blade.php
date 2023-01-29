@@ -23,7 +23,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table class="table table-bordered table-hover" id="mytable">
+                        <table class="table table-bordered table-hover" id="mytable" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th>
