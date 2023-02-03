@@ -23,8 +23,9 @@ Auth::routes([
   'verify' => false, // Email Verification Routes...
 ]);
 
-Route::get('/changePassword', [App\Http\Controllers\HomeController::class, 'showChangePasswordGet'])->name('changePasswordGet');
-Route::post('/changePassword', [App\Http\Controllers\HomeController::class, 'changePasswordPost'])->name('changePasswordPost');
+Route::get('/privacyPolicy', [App\Http\Controllers\HomeController::class, 'privacyPolicy'])->name('privacyPolicy');
+Route::get('/changePassword', [App\Http\Controllers\HomeController::class, 'showChangePasswordGet'])->name('changePasswordGet')->middleware('auth');;
+Route::post('/changePassword', [App\Http\Controllers\HomeController::class, 'changePasswordPost'])->name('changePasswordPost')->middleware('auth');;
 
 Route::middleware(['auth'])->group(function() {
 
